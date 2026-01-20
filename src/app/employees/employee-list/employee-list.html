@@ -1,0 +1,19 @@
+<!-- <p>employee-list works!</p> -->
+<mat-toolbar>
+  Employee Dashboard
+  <span style="flex:1"></span>
+  <button mat-button routerLink="/dashboard">Dashboard</button>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<app-search-bar (searchChange)="search($event)"></app-search-bar>
+
+<mat-card *ngFor="let e of paged">
+  <p><b>{{ e.name }}</b></p>
+  <p>{{ e.email }}</p>
+  <p>{{ e.department }}</p>
+  <button mat-button color="warn" (click)="delete(e.id)">Delete</button>
+</mat-card>
+
+<button mat-button (click)="prev()">Previous</button>
+<button mat-button (click)="next()">Next</button>
