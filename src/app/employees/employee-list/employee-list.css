@@ -1,0 +1,57 @@
+.main-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.search-section {
+  margin-bottom: 1.5rem;
+}
+
+.table-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-header-cell {
+  background-color: #f5f5f5;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.mat-mdc-row:hover {
+  background-color: #fafafa;
+}
+
+
+.dept-badge {
+  background-color: #e8f0fe;
+  color: #1967d2;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.pagination-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  border-top: 1px solid #eee;
+  gap: 15px;
+}
+
+.page-info {
+  font-size: 14px;
+  color: #666;
+}
+
+.spacer { flex: 1 1 auto; }

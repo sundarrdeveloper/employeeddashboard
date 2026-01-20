@@ -1,19 +1,63 @@
 <!-- <p>employee-list works!</p> -->
-<mat-toolbar>
-  Employee Dashboard
-  <span style="flex:1"></span>
+
+
+
+
+<mat-toolbar color="primary" class="elevation-z6">
+  <span>Employee Dashboard</span>
+  <span class="spacer"></span>
   <button mat-button routerLink="/dashboard">Dashboard</button>
-  <button mat-button (click)="logout()">Logout</button>
+  <button mat-icon-button (click)="logout()" title="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
 </mat-toolbar>
 
-<app-search-bar (searchChange)="search($event)"></app-search-bar>
+<div class="main-container">
+  <div class="search-section">
+    <app-search-bar (searchChange)="search($event)"></app-search-bar>
+  </div>
 
-<mat-card *ngFor="let e of paged">
-  <p><b>{{ e.name }}</b></p>
-  <p>{{ e.email }}</p>
-  <p>{{ e.department }}</p>
-  <button mat-button color="warn" (click)="delete(e.id)">Delete</button>
-</mat-card>
+  <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="paged">
 
-<button mat-button (click)="prev()">Previous</button>
-<button mat-button (click)="next()">Next</button>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let e"> <b>{{e.name}}</b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let e"> {{e.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef> Department </th>
+        <td mat-cell *matCellDef="let e"> 
+          <span class="dept-badge">{{e.department}}</span> 
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let e">
+          <button mat-icon-button color="warn" (click)="delete(e.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div class="pagination-bar">
+      <button mat-button (click)="prev()" [disabled]="page === 0">
+        <mat-icon>chevron_left</mat-icon> Previous
+      </button>
+      <span class="page-info">Page {{ page + 1 }}</span>
+      <button mat-button (click)="next()" [disabled]="(page + 1) * size >= filtered.length">
+        Next <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
