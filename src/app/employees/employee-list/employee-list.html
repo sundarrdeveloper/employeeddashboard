@@ -1,15 +1,15 @@
 <!-- <p>employee-list works!</p> -->
-
-
-
-
 <mat-toolbar color="primary" class="elevation-z6">
   <span>Employee Dashboard</span>
   <span class="spacer"></span>
+   <button mat-raised-button   color="primary" routerLink="/employeesformadd">
+    + Add Employee
+  </button>
   <button mat-button routerLink="/dashboard">Dashboard</button>
   <button mat-icon-button (click)="logout()" title="Logout">
     <mat-icon>logout</mat-icon>
   </button>
+ 
 </mat-toolbar>
 
 <div class="main-container">
